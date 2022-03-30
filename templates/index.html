@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <!--解消度をディスプレイサイズに合わせる-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <title>Qiita記事まとめ</title>
+    </head>
+    <body>
+        <h1 class="text-center bg-warning" >Qiita記事をスクレイピング</h1>
+        <h2 class="text-center">{{hoge}} </h2>
+        <form>
+            <div class="text-center">
+                <input name="query" >
+                <input type="submit" value="検索">
+            </div>
+        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for qiita in articlelist %}
+                        <div class="card mt-5">
+                            <div class="card-header">
+                                <h5 class="card-title">{{ qiita["title"] }}</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <p>{{ qiita['body'][0:100] + '...'}}</p>
+                            </div>
+                            <div class="card-body text-center">
+                                <a href="{{ qiita['url']}}" class="btn btn-info">Look Article</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
